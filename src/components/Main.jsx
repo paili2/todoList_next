@@ -6,9 +6,13 @@ import { useEffect, useState } from "react";
 
 const Main = () => {
   const [userId, setUserId] = useState("");
+  const [lastLoginTime, setLastLoginTime] = useState("");
 
   useEffect(() => {
     setUserId(() => localStorage.getItem("userId"));
+    const now = new Date();
+    const fommated = `${now.getHours()}시 ${now.getMinutes()}분 ${now.getSeconds()}초`;
+    setLastLoginTime(() => fommated);
   }, []);
 
   return (
@@ -19,7 +23,7 @@ const Main = () => {
             Good Day, {userId} 님
           </h1>
           <span className="text-sm text-gray-500">
-            최종 접속시간은 10시 02분 40초입니다
+            최종 접속시간은 {lastLoginTime}입니다
           </span>
         </div>
         <div className="flex justify-between">

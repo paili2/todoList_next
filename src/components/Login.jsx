@@ -20,10 +20,8 @@ const Login = () => {
     } else {
       if (!idValue.trim()) {
         alert("ID를 입력해주세요!");
-      } else if (idValue.trim() && !pwValue()) {
+      } else if (!pwValue.trim()) {
         alert("비밀번호를 입력해주세요!");
-      } else {
-        ("로그인 성공!");
       }
     }
   };
