@@ -1,6 +1,6 @@
 import { Children } from "react";
 
-const ListCard = ({ height, title, text, children }) => {
+const ListCard = ({ title, children }) => {
   return (
     <div
       className={`w-full ${
