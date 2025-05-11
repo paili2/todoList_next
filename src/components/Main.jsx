@@ -1,8 +1,10 @@
 "use client";
 
-import ListCard from "@/src/components/ListCard";
 import CalendarCard from "@/src/components/CalendarCard";
 import { useEffect, useState } from "react";
+import TodoListCard from "./TodoListCard";
+import CompleteListCard from "./CompleteListCard";
+import AddTodo from "./AddTodo";
 
 const Main = () => {
   const [userId, setUserId] = useState("");
@@ -11,7 +13,10 @@ const Main = () => {
   useEffect(() => {
     setUserId(() => localStorage.getItem("userId"));
     const now = new Date();
-    const fommated = `${now.getHours()}시 ${now.getMinutes()}분 ${now.getSeconds()}초`;
+    const fommated = `${now.getHours().toString().padStart("2", 0)}시 ${now
+      .getMinutes()
+      .toString()
+      .padStart("2", 0)}분 ${now.getSeconds().toString().padStart("2", 0)}초`;
     setLastLoginTime(() => fommated);
   }, []);
 
@@ -26,23 +31,18 @@ const Main = () => {
             최종 접속시간은 {lastLoginTime}입니다
           </span>
         </div>
-        <div className="flex justify-between">
-          <div className="w-19/20 border-0 shadow-md bg-white p-3 rounded-4xl">
-            <input
-              className="w-full appearance-none outline-none border-none bg-transparent"
-              type="text"
-              placeholder="While a To Do and Press Enter"
-            />
-          </div>
-          <button className="w-10 h-10 rounded-full bg-blue-500 text-white text-xl shadow-md hover:bg-blue-600 transition duration-200">
-            +
-          </button>
-        </div>
+        <AddTodo></AddTodo>
         <div className="grid grid-cols-2 gap-x-15">
-          <ListCard title={"Todo List"}></ListCard>{" "}
-          <ListCard title={"Complete List"}></ListCard>
+          <TodoListCard>
+            <span>하이</span>
+            <span>헬로</span>
+          </TodoListCard>
+          <CompleteListCard>
+            <span>헬로</span>
+            <span>헬로</span>
+          </CompleteListCard>
         </div>
-        <ListCard title={"Life Quotes"}></ListCard>
+        {/* <ListCard title={"Life Quotes"}></ListCard> */}
       </div>
       <div className="col-span-1 p-10">
         <CalendarCard></CalendarCard>

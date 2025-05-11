@@ -17,7 +17,7 @@ const ClaendarCard = () => {
       setTime(
         (prev) =>
           hour.replace("시", ":").padStart(2, "0") +
-          minute.replace("분", ":").padStart(2, "0") +
+          minute.replace("분", ":").padStart(3, "0") +
           seconds.replace("초", "").padStart(2, "0")
       );
     }, 1000);
